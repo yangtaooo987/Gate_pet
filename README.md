@@ -1,30 +1,30 @@
 # Gate_pet
 
-### structure of the simulation
+## structure of the simulation
 
-#### data
+### data
 数据库
 
-#### output
+### output
 root输出
 intefile 输出
 
-#### mac
-##### word
+### mac
+#### word
 
-##### system
+#### system
 pet
 spect
 
-##### phantom
+#### phantom
 
-##### detectors
+#### detectors
 
-##### digitizer
+#### digitizer
 
-##### physics，cuts, init
+#### physics，cuts, init
 
-##### head
+#### head
 
-##### 
+#### 
 
