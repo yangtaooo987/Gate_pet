@@ -12,7 +12,7 @@ intefile 输出
 ### mac
 #### word
 
-'''
+```
 # World
 /gate/world/geometry/setXLength 1.5 m
 /gate/world/geometry/setYLength 1.5 m
@@ -20,7 +20,7 @@ intefile 输出
 /gate/world/vis/setColor white
 /gate/world/vis/forceWireframe
 /gate/world/setMaterial Air
-'''
+```
 
 
 #### system
