@@ -172,7 +172,9 @@ spect
 #### digitizer
 <details>
 <summary>pet digitizer</summary>
+
 ```
+
 # The singles
 /gate/digitizerMgr/LSO/SinglesDigitizer/Singles/insert                        adder
 #/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert                        adder
@@ -207,6 +209,7 @@ spect
 ```
 
 </details>
+
 #### physics，cuts, init
 
 #### head
