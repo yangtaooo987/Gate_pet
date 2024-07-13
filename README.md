@@ -240,7 +240,8 @@ spect
 /gate/physics/processList Initialized
 ```
 ### initialization
-[!NOTE] The initialisation step must be performed after the geometry, phantom and digitizer is set and before the definition of the source and root output:
+[!NOTE]
+The initialisation step must be performed after the geometry, phantom and digitizer is set and before the definition of the source and root output:
 
 #### head
 
