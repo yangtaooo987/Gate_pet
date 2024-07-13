@@ -210,7 +210,7 @@ spect
 
 </details>
 
-#### physics，cuts, init
+#### physics，cuts
 
 ```
 /gate/physics/addPhysicsList emstandard_opt3
@@ -239,8 +239,8 @@ spect
 /gate/physics/processList Enabled
 /gate/physics/processList Initialized
 ```
-
-!note! The initialisation step must be performed after the geometry, phantom and digitizer is set and before the definition of the source and root output:
+### initialization
+[!NOTE] The initialisation step must be performed after the geometry, phantom and digitizer is set and before the definition of the source and root output:
 
 #### head
 
