@@ -172,7 +172,6 @@ spect
 #### digitizer
 <details>
 <summary>pet digitizer</summary>
-</details>
 ```
 # The singles
 /gate/digitizerMgr/LSO/SinglesDigitizer/Singles/insert                        adder
@@ -206,6 +205,8 @@ spect
 #/gate/digitizerMgr/delay/MultiplesPolicy          takeWinnerOfGoods
 
 ```
+
+</details>
 #### physics，cuts, init
 
 #### head
