@@ -212,6 +212,36 @@ spect
 
 #### physics，cuts, init
 
+```
+/gate/physics/addPhysicsList emstandard_opt3
+
+# High cut by default
+/gate/physics/Gamma/SetCutInRegion      world 1 km
+/gate/physics/Electron/SetCutInRegion   world 1 km
+/gate/physics/Positron/SetCutInRegion   world 1 km
+
+# Cuts for particle in NEMACylinder
+/gate/physics/Gamma/SetCutInRegion      phantom 1.0 mm
+/gate/physics/Electron/SetCutInRegion   phantom 1.0 mm
+/gate/physics/Positron/SetCutInRegion   phantom 1.0 mm
+
+# Cuts for particle in LSO
+/gate/physics/Gamma/SetCutInRegion      LSO 1.0 mm
+/gate/physics/Electron/SetCutInRegion   LSO 1.0 mm
+/gate/physics/Positron/SetCutInRegion   LSO 1.0 mm
+
+# Cuts for particle in BGO
+#/gate/physics/Gamma/SetCutInRegion      BGO 1.0 mm
+#/gate/physics/Electron/SetCutInRegion   BGO 1.0 mm
+#/gate/physics/Positron/SetCutInRegion   BGO 1.0 mm
+
+
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+```
+
+!note! The initialisation step must be performed after the geometry, phantom and digitizer is set and before the definition of the source and root output:
+
 #### head
 
 #### 
