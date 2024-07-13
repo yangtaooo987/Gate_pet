@@ -11,13 +11,6 @@
 /gate/geometry/setMaterialDatabase data/GateMaterials.db
 ```
 
-
-### output
-root输出
-intefile 输出
-
-### mac
-Geometry
 ### word
 
 ```
