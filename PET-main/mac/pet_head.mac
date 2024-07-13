@@ -1,43 +1,4 @@
-# Gate_pet
 
-## structure of the simulation
-
-### data
-数据库
-```
-##########################################################
-# Material Database
-##########################################################
-/gate/geometry/setMaterialDatabase data/GateMaterials.db
-```
-
-
-### output
-root输出
-intefile 输出
-
-### mac
-Geometry
-#### word
-
-```
-# World
-/gate/world/geometry/setXLength 1.5 m
-/gate/world/geometry/setYLength 1.5 m
-/gate/world/geometry/setZLength 1.5 m
-/gate/world/vis/setColor white
-/gate/world/vis/forceWireframe
-/gate/world/setMaterial Air
-```
-
-
-#### system
-pet
-spect
-<details>
-<summary>pet head</summary>
-
-```
 #	CYLINDRICAL
 /gate/world/daughters/name cylindricalPET
 /gate/world/daughters/insert cylinder
@@ -145,20 +106,7 @@ spect
 
 /gate/LSO/attachCrystalSD
 
+
 /gate/systems/cylindricalPET/describe
 
-```
-</details>
-
-#### phantom
-
-#### detectors
-
-#### digitizer
-
-#### physics，cuts, init
-
-#### head
-
-#### 
 
