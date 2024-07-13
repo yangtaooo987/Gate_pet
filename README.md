@@ -151,11 +151,61 @@ spect
 </details>
 
 #### phantom
+```
+# Define a cylindrical box
+/gate/world/daughters/name         phantom
+/gate/world/daughters/insert       cylinder
+/gate/phantom/geometry/setRmin     0.0 cm
+/gate/phantom/geometry/setRmax     10.0 cm
+/gate/phantom/geometry/setHeight   70. cm
+/gate/phantom/setMaterial          Water
+/gate/phantom/vis/setColor         blue
 
+# Define the sensitive detector
+/gate/phantom/attachPhantomSD
+#/gate/endshielding/attachPhantomSD
+#/gate/septa/attachPhantomSD
+
+```
 #### detectors
 
 #### digitizer
+<details>
+<summary>pet digitizer</summary>
+</details>
+```
+# The singles
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/insert                        adder
+#/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert                        adder
 
+#/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert                        merger
+#/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/merger/addInput  adder/Singles_LSO
+
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/insert                        readout
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/readout/setDepth              1
+
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/insert                        energyResolution
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/energyResolution/fwhm        0.26
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/energyResolution/energyOfReference 511. keV
+
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/insert                        energyFraming
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/energyFraming/setMin      350. keV
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/energyFraming/setMax            650. keV
+
+
+# Coincidence sorter
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/setInputCollection Singles_LSO
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/setWindow          120 ns
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/MultiplesPolicy    takeWinnerOfGoods
+
+/gate/digitizerMgr/name                            delay
+/gate/digitizerMgr/insert                          CoincidenceSorter
+/gate/digitizerMgr/CoincidenceSorter/delay/setInputCollection Singles_LSO
+/gate/digitizerMgr/CoincidenceSorter/delay/setWindow                 120 ns
+/gate/digitizerMgr/CoincidenceSorter/delay/setOffset                 500 ns
+#/gate/digitizerMgr/delay/MultiplesPolicy          takeWinnerOfGoods
+
+```
 #### physics，cuts, init
 
 #### head
