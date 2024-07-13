@@ -34,6 +34,9 @@ Geometry
 #### system
 pet
 spect
+<details>
+<summary>pet head</summary>
+
 ```
 #	CYLINDRICAL
 /gate/world/daughters/name cylindricalPET
@@ -145,7 +148,7 @@ spect
 /gate/systems/cylindricalPET/describe
 
 ```
-
+</details>
 
 #### phantom
 
