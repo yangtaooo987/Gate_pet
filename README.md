@@ -23,7 +23,7 @@
 > [!NOTE] 
 > Steps 1) to 4) concern the initialization of the simulation. Following the initialization, the geometry can no longer be changed.
 
-![GATE SIMULATION STRUCTURE](https://github.com/yangtaooo987/Gate_pet/blob/my-branch/assets/images/GATE.jpg)
+![GATE SIMULATION STRUCTURE](https://github.com/yangtaooo987/Gate_pet/blob/my-branch/assets/images/GATE.png)
 
 
 ### data
