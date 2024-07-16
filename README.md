@@ -33,14 +33,7 @@
 /gate/geometry/setMaterialDatabase data/GateMaterials.db
 ```
 
-
-### output
-root输出
-intefile 输出
-
-### mac
-Geometry
-#### word
+### word
 
 ```
 # World
@@ -53,7 +46,7 @@ Geometry
 ```
 
 
-#### system
+### system
 pet
 spect
 <details>
@@ -172,7 +165,7 @@ spect
 ```
 </details>
 
-#### phantom
+### phantom
 ```
 # Define a cylindrical box
 /gate/world/daughters/name         phantom
@@ -189,9 +182,9 @@ spect
 #/gate/septa/attachPhantomSD
 
 ```
-#### detectors
+### detectors
 
-#### digitizer
+### digitizer
 <details>
 <summary>pet digitizer</summary>
 
@@ -232,9 +225,158 @@ spect
 
 </details>
 
-#### physics，cuts, init
+### physics，cuts
 
-#### head
+```
+/gate/physics/addPhysicsList emstandard_opt3
 
-#### 
+# High cut by default
+/gate/physics/Gamma/SetCutInRegion      world 1 km
+/gate/physics/Electron/SetCutInRegion   world 1 km
+/gate/physics/Positron/SetCutInRegion   world 1 km
+
+# Cuts for particle in NEMACylinder
+/gate/physics/Gamma/SetCutInRegion      phantom 1.0 mm
+/gate/physics/Electron/SetCutInRegion   phantom 1.0 mm
+/gate/physics/Positron/SetCutInRegion   phantom 1.0 mm
+
+# Cuts for particle in LSO
+/gate/physics/Gamma/SetCutInRegion      LSO 1.0 mm
+/gate/physics/Electron/SetCutInRegion   LSO 1.0 mm
+/gate/physics/Positron/SetCutInRegion   LSO 1.0 mm
+
+# Cuts for particle in BGO
+#/gate/physics/Gamma/SetCutInRegion      BGO 1.0 mm
+#/gate/physics/Electron/SetCutInRegion   BGO 1.0 mm
+#/gate/physics/Positron/SetCutInRegion   BGO 1.0 mm
+
+
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+```
+### initialization
+> [!NOTE]
+> The initialisation step must be performed after the geometry, phantom and digitizer is set and before the definition of the source and root output:
+```
+# Initialisation
+##########################################################
+/gate/run/initialize
+```
+
+### source
+```
+/gate/source/addSource F18LineSource
+/gate/source/F18LineSource/setActivity 100000. becquerel
+
+/gate/source/F18LineSource/gps/particle e+
+/gate/source/F18LineSource/setForcedUnstableFlag true
+/gate/source/F18LineSource/setForcedHalfLife 6586.2 s
+/gate/source/F18LineSource/gps/energytype Fluor18
+/gate/source/F18LineSource/gps/type Volume
+/gate/source/F18LineSource/gps/shape Cylinder
+/gate/source/F18LineSource/gps/radius .5 mm
+/gate/source/F18LineSource/gps/halfz 34.0 cm
+/gate/source/F18LineSource/gps/angtype iso
+/gate/source/F18LineSource/gps/centre 0. -2.0 0. cm
+
+/gate/source/addSource O15LineSource
+/gate/source/O15LineSource/setActivity 100000. becquerel
+/gate/source/O15LineSource/gps/particle e+
+/gate/source/O15LineSource/setForcedUnstableFlag true
+/gate/source/O15LineSource/setForcedHalfLife 122.24 s
+/gate/source/O15LineSource/gps/energytype Oxygen15
+/gate/source/O15LineSource/gps/type Volume
+/gate/source/O15LineSource/gps/shape Cylinder
+/gate/source/O15LineSource/gps/radius .5 mm
+/gate/source/O15LineSource/gps/halfz 34.0 cm
+/gate/source/O15LineSource/gps/angtype iso
+/gate/source/O15LineSource/gps/centre 0. 2.0 0. cm
+
+/gate/source/list
+```
+
+
+### output
+```
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/stat.txt
+#/gate/actor/stat/saveEveryNSeconds 60
+
+
+# Define a root listmode file output
+
+/gate/output/root/enable
+/gate/output/root/setFileName             output/pet
+
+/gate/output/root/setRootHitFlag          0
+/gate/output/root/setRootSinglesFlag      1
+/gate/output/root/setRootCoincidencesFlag 1
+/gate/output/root/setRootdelayFlag        1
+/gate/output/root/setRootNtupleFlag       0
+```
+
+### vis
+```
+/vis/open                     OGLIQt
+/vis/drawVolume
+/vis/viewer/flush
+/tracking/storeTrajectory     1
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction   accumulate
+
+/vis/scene/add/axes            0 0 0 500 mm
+/vis/scene/add/text            10 0 0 cm  20 0 0   X
+/vis/scene/add/text            0 10 0 cm  20 0 0   Y
+/vis/scene/add/text            0 0 10 cm  20 0 0   Z
+
+#/vis/viewer/set/viewpointThetaPhi 90 -90
+#/vis/viewer/set/viewpointThetaPhi 20 35
+#/vis/viewer/panTo 0 0
+#/vis/viewer/zoom 50
+
+/vis/viewer/set/auxiliaryEdge  true
+```
+
+### verbose
+```
+/gate/verbose Physic    0
+/gate/verbose Cuts      0
+/gate/verbose SD        0
+/gate/verbose Actions   0
+/gate/verbose Actor     0
+/gate/verbose Step      0
+/gate/verbose Error     0
+/gate/verbose Warning   0
+/gate/verbose Output    0
+/gate/verbose Beam      0
+/gate/verbose Volume    0
+/gate/verbose Image     0
+/gate/verbose Geometry  0
+/gate/verbose Core      0
+
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0	
+```
+
+### ramdom
+```
+# Random
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+```
+
+### run
+```
+# Start acquisition
+/gate/application/setTimeStart 0 s
+/gate/application/setTimeSlice 60 s
+/gate/application/setTimeStop  120 s
+
+/gate/application/startDAQ
+```
+
+
+
+
 
