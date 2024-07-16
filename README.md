@@ -1,6 +1,28 @@
 # Gate_pet
 
 ## structure of the simulation
+1. set the dataset
+
+2. define the scanner geometry
+
+3. define the phantom geometry
+
+4. set up the physics processes
+
+5. initialize the simulation:
+
+/gate/run/initialize
+6. set up the detector model
+
+7. define the source(s)
+
+8. specify the data output format
+
+9. start the acquisition
+
+> [!NOTE] 
+> Steps 1) to 4) concern the initialization of the simulation. Following the initialization, the geometry can no longer be changed.
+
 
 ### data
 数据库
