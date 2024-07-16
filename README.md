@@ -23,6 +23,8 @@
 > [!NOTE] 
 > Steps 1) to 4) concern the initialization of the simulation. Following the initialization, the geometry can no longer be changed.
 
+![GATE SIMULATION STRUCTURE](/assets/images/GATE structure.jpg)
+
 
 ### data
 数据库
